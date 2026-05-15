@@ -1,6 +1,6 @@
 package com.gameup.ticket_service.service;
 
-import com.gameup.ticket_service.dto.TicketSoporteRequestDTO;
+import com.gameup.ticket_service.dto.TicketRequestDTO;
 import com.gameup.ticket_service.model.TicketSoporte;
 import com.gameup.ticket_service.repository.TicketSoporteRepository;
 
@@ -21,7 +21,7 @@ public class TicketSoporteService {
         return repository.findAll();
     }
 
-    public TicketSoporte guardar(TicketSoporteRequestDTO dto) {
+    public TicketSoporte guardar(TicketRequestDTO dto) {
 
         TicketSoporte ticket = new TicketSoporte();
 

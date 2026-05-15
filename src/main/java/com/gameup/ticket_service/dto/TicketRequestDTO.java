@@ -2,7 +2,7 @@ package com.gameup.ticket_service.dto;
 
 import java.time.LocalDate;
 
-public class TicketSoporteRequestDTO {
+public class TicketRequestDTO {
 
     private Long idUsuario;
     private String asunto;

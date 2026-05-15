@@ -1,6 +1,6 @@
 package com.gameup.ticket_service.controller;
 
-import com.gameup.ticket_service.dto.TicketSoporteRequestDTO;
+import com.gameup.ticket_service.dto.TicketRequestDTO;
 import com.gameup.ticket_service.model.TicketSoporte;
 import com.gameup.ticket_service.service.TicketSoporteService;
 
@@ -24,7 +24,7 @@ public class TicketSoporteController {
     }
 
     @PostMapping
-    public TicketSoporte guardar(@RequestBody TicketSoporteRequestDTO dto) {
+    public TicketSoporte guardar(@RequestBody TicketRequestDTO dto) {
         return service.guardar(dto);
     }
 
