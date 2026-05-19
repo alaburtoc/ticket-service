@@ -1,52 +1,21 @@
 package com.gameup.ticket_service.dto;
 
-import java.time.LocalDate;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
+import lombok.Data;
 
+@Data
 public class TicketSoporteRequestDTO {
 
+    @NotNull(message = "El id de usuario es obligatorio")
     private Long idUsuario;
+
+    @NotNull(message = "El id del admin es obligatorio")
+    private Long idAdmin;
+
+    @NotBlank(message = "El asunto es obligatorio")
     private String asunto;
+
+    @NotBlank(message = "La descripción es obligatoria")
     private String descripcion;
-    private String estado;
-    private LocalDate fechaCreacion;
-
-    public Long getIdUsuario() {
-        return idUsuario;
-    }
-
-    public void setIdUsuario(Long idUsuario) {
-        this.idUsuario = idUsuario;
-    }
-
-    public String getAsunto() {
-        return asunto;
-    }
-
-    public void setAsunto(String asunto) {
-        this.asunto = asunto;
-    }
-
-    public String getDescripcion() {
-        return descripcion;
-    }
-
-    public void setDescripcion(String descripcion) {
-        this.descripcion = descripcion;
-    }
-
-    public String getEstado() {
-        return estado;
-    }
-
-    public void setEstado(String estado) {
-        this.estado = estado;
-    }
-
-    public LocalDate getFechaCreacion() {
-        return fechaCreacion;
-    }
-
-    public void setFechaCreacion(LocalDate fechaCreacion) {
-        this.fechaCreacion = fechaCreacion;
-    }
 }

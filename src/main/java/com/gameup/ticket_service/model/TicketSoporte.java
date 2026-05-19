@@ -1,10 +1,14 @@
 package com.gameup.ticket_service.model;
 
 import jakarta.persistence.*;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 import java.time.LocalDate;
 
 @Entity
 @Table(name = "ticket_soporte")
+@Data
+@NoArgsConstructor
 public class TicketSoporte {
 
     @Id
@@ -13,6 +17,8 @@ public class TicketSoporte {
 
     private Long idUsuario;
 
+    private Long idAdmin;
+
     private String asunto;
 
     private String descripcion;
@@ -20,55 +26,4 @@ public class TicketSoporte {
     private String estado;
 
     private LocalDate fechaCreacion;
-
-    public TicketSoporte() {
-    }
-
-    public Long getIdTicket() {
-        return idTicket;
-    }
-
-    public void setIdTicket(Long idTicket) {
-        this.idTicket = idTicket;
-    }
-
-    public Long getIdUsuario() {
-        return idUsuario;
-    }
-
-    public void setIdUsuario(Long idUsuario) {
-        this.idUsuario = idUsuario;
-    }
-
-    public String getAsunto() {
-        return asunto;
-    }
-
-    public void setAsunto(String asunto) {
-        this.asunto = asunto;
-    }
-
-    public String getDescripcion() {
-        return descripcion;
-    }
-
-    public void setDescripcion(String descripcion) {
-        this.descripcion = descripcion;
-    }
-
-    public String getEstado() {
-        return estado;
-    }
-
-    public void setEstado(String estado) {
-        this.estado = estado;
-    }
-
-    public LocalDate getFechaCreacion() {
-        return fechaCreacion;
-    }
-
-    public void setFechaCreacion(LocalDate fechaCreacion) {
-        this.fechaCreacion = fechaCreacion;
-    }
 }

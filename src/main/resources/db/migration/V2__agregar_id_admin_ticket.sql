@@ -1,0 +1,1 @@
+ALTER TABLE ticket_soporte ADD COLUMN id_admin BIGINT NOT NULL;
