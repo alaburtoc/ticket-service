@@ -35,4 +35,10 @@ public class TicketSoporteController {
     public void eliminar(@PathVariable Long id) {
         service.eliminar(id);
     }
+
+    @PatchMapping("/{id}/cerrar")
+    public TicketSoporte cerrarTicket(@PathVariable Long id) {
+        return service.cerrarTicket(id);
+    }
+
 }

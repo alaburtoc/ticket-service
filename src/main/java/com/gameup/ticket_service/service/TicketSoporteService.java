@@ -60,4 +60,17 @@ public class TicketSoporteService {
         }
         repository.deleteById(id);
     }
+
+    public TicketSoporte cerrarTicket(Long id) {
+        TicketSoporte ticket = repository.findById(id)
+                .orElseThrow(() -> new ResourceNotFoundException(
+                        "Ticket no encontrado con id: " + id));
+
+        if ("CERRADO".equals(ticket.getEstado())) {
+            throw new RuntimeException("El ticket con id " + id + " ya está cerrado");
+        }
+
+        ticket.setEstado("CERRADO");
+        return repository.save(ticket);
+    }
 }
