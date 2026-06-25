@@ -4,10 +4,14 @@ import com.gameup.ticket_service.dto.TicketSoporteRequestDTO;
 import com.gameup.ticket_service.model.TicketSoporte;
 import com.gameup.ticket_service.service.TicketSoporteService;
 import jakarta.validation.Valid;
+import org.springframework.hateoas.EntityModel;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+
+import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.linkTo;
+import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.methodOn;
 
 @RestController
 @RequestMapping("/tickets")
@@ -22,6 +26,22 @@ public class TicketSoporteController {
     @GetMapping
     public List<TicketSoporte> obtenerTodos() {
         return service.obtenerTodos();
+    }
+
+    @GetMapping("/{id}")
+    public EntityModel<TicketSoporte> obtenerPorId(@PathVariable Long id) {
+
+        TicketSoporte ticket = service.obtenerPorId(id);
+
+        EntityModel<TicketSoporte> recurso = EntityModel.of(ticket);
+
+        recurso.add(
+                linkTo(methodOn(TicketSoporteController.class)
+                        .obtenerPorId(id))
+                        .withSelfRel()
+        );
+
+        return recurso;
     }
 
     @PostMapping
@@ -40,5 +60,4 @@ public class TicketSoporteController {
     public TicketSoporte cerrarTicket(@PathVariable Long id) {
         return service.cerrarTicket(id);
     }
-
 }

@@ -28,6 +28,14 @@ public class TicketSoporteService {
         return repository.findAll();
     }
 
+    // NUEVO MÉTODO PARA HATEOAS
+    public TicketSoporte obtenerPorId(Long id) {
+        return repository.findById(id)
+                .orElseThrow(() ->
+                        new ResourceNotFoundException(
+                                "Ticket no encontrado con id: " + id));
+    }
+
     public TicketSoporte guardar(TicketSoporteRequestDTO dto) {
 
         AdminResponseDTO admin;
