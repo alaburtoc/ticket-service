@@ -1,74 +1,44 @@
 package com.gameup.ticket_service.model;
 
 import jakarta.persistence.*;
+import lombok.*;
 import java.time.LocalDate;
 
+@Data
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
 @Entity
-@Table(name = "ticket_soporte")
+@Table(name = "tickets")
 public class TicketSoporte {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id_ticket")
     private Long idTicket;
 
+    @Column(name = "id_usuario", nullable = false)
     private Long idUsuario;
 
+    @Column(nullable = false, length = 255)
     private String asunto;
 
+    @Column(nullable = false, length = 500)
     private String descripcion;
 
+    @Column(nullable = false, length = 100)
     private String estado;
 
+    @Column(name = "fecha_creacion", nullable = false)
     private LocalDate fechaCreacion;
 
-    public TicketSoporte() {
-    }
-
-    public Long getIdTicket() {
-        return idTicket;
-    }
-
-    public void setIdTicket(Long idTicket) {
-        this.idTicket = idTicket;
-    }
-
-    public Long getIdUsuario() {
-        return idUsuario;
-    }
-
-    public void setIdUsuario(Long idUsuario) {
-        this.idUsuario = idUsuario;
-    }
-
-    public String getAsunto() {
-        return asunto;
-    }
-
-    public void setAsunto(String asunto) {
-        this.asunto = asunto;
-    }
-
-    public String getDescripcion() {
-        return descripcion;
-    }
-
-    public void setDescripcion(String descripcion) {
-        this.descripcion = descripcion;
-    }
-
-    public String getEstado() {
-        return estado;
-    }
-
-    public void setEstado(String estado) {
-        this.estado = estado;
-    }
-
-    public LocalDate getFechaCreacion() {
-        return fechaCreacion;
-    }
-
-    public void setFechaCreacion(LocalDate fechaCreacion) {
-        this.fechaCreacion = fechaCreacion;
+    @PrePersist
+    protected void onCreate() {
+        if (this.fechaCreacion == null) {
+            this.fechaCreacion = LocalDate.now();
+        }
+        if (this.estado == null) {
+            this.estado = "ABIERTO";
+        }
     }
 }
